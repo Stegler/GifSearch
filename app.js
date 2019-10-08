@@ -1,11 +1,13 @@
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+// var type = "batman";
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-});
+// var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=8c9ZjVfsbKwiGHW3vFfNHCaI2lScVEBo&limit=10";
+
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// }).then(function (response) {
+//     console.log(response);
+// });
 
 // Initial array of gifs
 var gifs = ["Leonardo Dicaprio", "Adam Sandler", "Gal Gadot", "Will Smith"];
@@ -33,7 +35,7 @@ function renderButtons() {
     }
 }
 
-// This function handles events where one button is clicked
+// This function is called when a button is clicked
 $(".gif-add").on("click", function (event) {
     // Preventing the buttons default behavior when clicked (which is submitting a form)
     event.preventDefault();
@@ -43,8 +45,29 @@ $(".gif-add").on("click", function (event) {
     // Pushing the input into gifs array
     gifs.push(gifName);
 
-    // Calling renderButtons which handles the processing of our movie array
     renderButtons();
+
 });
 
+
+function showgif() {
+    var type = "cars";
+
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=8c9ZjVfsbKwiGHW3vFfNHCaI2lScVEBo&limit=10";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response.data);
+
+        // var still = response.data
+
+        // var gifImage = $("<img>");
+        // gifImage.attr("src", still);
+
+    });
+};
+
 renderButtons();
+showgif();
