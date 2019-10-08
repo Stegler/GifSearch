@@ -1,7 +1,12 @@
-.button {
+.gif-button {
     margin-right: 8px;
 }
 
 * {
     font-family: 'Gochi Hand', cursive;
+}
+
+.display-gifs {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
