@@ -1,14 +1,3 @@
-// var type = "batman";
-
-// var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=8c9ZjVfsbKwiGHW3vFfNHCaI2lScVEBo&limit=10";
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     console.log(response);
-// });
-
 // Initial array of gifs
 var gifs = ["Leonardo Dicaprio", "Adam Sandler", "Gal Gadot", "Will Smith"];
 
@@ -49,9 +38,9 @@ $(".gif-add").on("click", function (event) {
 
 });
 
-
+// This function makes the AJAX request and loops through the results
 function showgif() {
-    var type = "cars";
+    var type = "boats";
 
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=8c9ZjVfsbKwiGHW3vFfNHCaI2lScVEBo&limit=10";
 
@@ -59,13 +48,31 @@ function showgif() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response.data);
 
-        // var still = response.data
+        var results = response.data;
 
-        // var gifImage = $("<img>");
-        // gifImage.attr("src", still);
+        for (var i = 0; i < results.length; i++) {
 
+            // Creating a div tag to store all info for each result from ajax response
+            var gifDiv = $("<div>");
+
+            // Creating a paragraph tag to store rating info
+            var ratingDiv = $("<p>").text("Rating " + results[i].rating);
+
+            // Creating an image tag to show the gif image
+            var gifImage = $("<img>");
+
+            // Setting a src attribute to the image tag
+            gifImage.attr("src", results[i].images.fixed_height.url);
+
+            // Appending ratingDiv and gifImage to gifDiv
+            gifDiv.append(ratingDiv);
+            gifDiv.append(gifImage);
+
+            // Prepending the divs created with the for-loop to the div in the HTML
+            $(".display-gifs").prepend(gifDiv);
+
+        }
     });
 };
 
