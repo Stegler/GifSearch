@@ -84,7 +84,7 @@ $(document).ready(function () {
                     // Creating a paragraph tag to store rating info
                     var ratingDiv = $("<p>").text("Rating " + results[i].rating);
 
-                    // Setting a src attribute to the image tag
+                    // Set src attribute to the gif url
                     gifImage.attr("src", results[i].images.fixed_height.url);
 
                     // Appending ratingDiv and gifImage to gifDiv
