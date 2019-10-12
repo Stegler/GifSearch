@@ -11,3 +11,5 @@ Simple application demonstrating the use of an AJAX requests to the Giphy API an
 - jQuery
 - Giphy API
 - AJAX
+
+![Image](gifSearch.png)
